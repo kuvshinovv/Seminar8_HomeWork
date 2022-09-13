@@ -38,6 +38,16 @@ void Show2dArray(int[,] array){
 
 
 
+
+
+
+
+
+
+
+
+
+
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, 
 // которая будет находить строку с наименьшей суммой элементов.
 // Например, задан массив:
@@ -47,7 +57,7 @@ void Show2dArray(int[,] array){
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-
+ 
 int[] MinSummInRow(int[,] array){
     int[] summ = new int[array.GetLength(0)];
     
@@ -85,13 +95,11 @@ void MinEL(int[] array){
     Console.WriteLine($"Минимальная сумма {minElement} находится в {stroka} строке ");
 }
 
-
-
 Console.Write("Введите количество строк: ");
 int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите количество столбцов: ");
 int cols = Convert.ToInt32(Console.ReadLine());
-if (rows == cols)
+if (rows < cols)
 {
     Console.Write("Введите значение минимального элемента: ");
     int min = Convert.ToInt32(Console.ReadLine());
@@ -102,17 +110,16 @@ if (rows == cols)
     Show2dArray(array); 
     Console.WriteLine();
     int[] minnn = MinSummInRow(array);
-    //ShowArray(minnn);
     Console.WriteLine();
     MinEL(minnn);
-    //Console.WriteLine("Минимальная сумма в "+minnn+" строке");
+    
 }
 else
 {
     Console.WriteLine("Введён не прямоугольный двумерный массив!");
 }
 
-
+ 
 
 
 
