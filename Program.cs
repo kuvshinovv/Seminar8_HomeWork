@@ -1,4 +1,4 @@
-﻿
+﻿// Создаем двумерный рандомный массив
 int[,] CreateRandom2DArray(int rows, int cols, int min, int max){
     int[,] array = new int[rows, cols];
     for(int i = 0 ; i <rows; i++){
@@ -9,6 +9,7 @@ int[,] CreateRandom2DArray(int rows, int cols, int min, int max){
     return array;
 }
 
+// Выводим двумерный массив в консоль
 void Show2dArray(int[,] array){
     for (int i = 0; i < array.GetLength(0); i++)
     {   Console.WriteLine();
@@ -18,6 +19,12 @@ void Show2dArray(int[,] array){
         }
     }
 }
+
+
+
+
+
+
 
 
 
@@ -31,15 +38,55 @@ void Show2dArray(int[,] array){
 // 9 5 3 2
 // 8 4 4 2
 
+// сортировка пузырьком 
+void BSort(int[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+        for (int j = 0; j < arr.Length - i - 1; j++)
+        {
+            if (arr[j] < arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+}
 
+//заменяем значения в стоке или столбце исходного массива на отсортированные значения
+void Insert(bool isRow, int dim, int[] source, int[,] dest)
+{
+    for (int k = 0; k < source.Length; k++)
+    {
+        if (isRow)
+            dest[dim, k] = source[k];
+        else
+            dest[k, dim] = source[k];
+    }
+}
 
+Console.Write("Введите количество строк: ");
+int rowCount = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int colCount = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение минимального элемента: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число максимального элемента: ");
+int max = Convert.ToInt32(Console.ReadLine());
 
-
-
-
-
-
-
+int[,] array = CreateRandom2DArray(rowCount, colCount, min, max);
+Show2dArray(array);
+Console.WriteLine();
+Console.WriteLine("Сортировка по строкам:");
+int[] row = new int[colCount];
+for (int i = 0; i < rowCount; i++)
+{
+    for (int j = 0; j < colCount; j++)
+        row[j] = array[i, j];
+    BSort(row);
+    Insert(true, i, row, array);
+}
+Show2dArray(array);
 
 
 
@@ -57,7 +104,7 @@ void Show2dArray(int[,] array){
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
- 
+ /* 
 int[] MinSummInRow(int[,] array){
     int[] summ = new int[array.GetLength(0)];
     
@@ -119,7 +166,7 @@ else
     Console.WriteLine("Введён не прямоугольный двумерный массив!");
 }
 
- 
+  */
 
 
 
