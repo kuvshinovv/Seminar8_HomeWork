@@ -37,7 +37,7 @@ void Show2dArray(int[,] array){
 // 7 4 2 1
 // 9 5 3 2
 // 8 4 4 2
-
+/* 
 // сортировка пузырьком 
 void BSort(int[] arr)
 {
@@ -88,7 +88,7 @@ for (int i = 0; i < rowCount; i++)
 }
 Show2dArray(array);
 
-
+ */
 
 
 
@@ -104,7 +104,7 @@ Show2dArray(array);
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
- /* 
+ 
 int[] MinSummInRow(int[,] array){
     int[] summ = new int[array.GetLength(0)];
     
@@ -139,7 +139,7 @@ void MinEL(int[] array){
                 
             }
         } 
-    Console.WriteLine($"Минимальная сумма {minElement} находится в {stroka} строке ");
+    Console.WriteLine($"Минимальная сумма находится в {stroka} строке ");
 }
 
 Console.Write("Введите количество строк: ");
@@ -166,7 +166,7 @@ else
     Console.WriteLine("Введён не прямоугольный двумерный массив!");
 }
 
-  */
+  
 
 
 
