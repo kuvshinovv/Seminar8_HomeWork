@@ -1,4 +1,5 @@
-﻿// Создаем двумерный рандомный массив
+﻿/* 
+// Создаем двумерный рандомный массив
 int[,] CreateRandom2DArray(int rows, int cols, int min, int max){
     int[,] array = new int[rows, cols];
     for(int i = 0 ; i <rows; i++){
@@ -20,7 +21,7 @@ void Show2dArray(int[,] array){
     }
 }
 
-
+ */
 
 
 
@@ -104,7 +105,7 @@ Show2dArray(array);
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
- 
+/*  
 int[] MinSummInRow(int[,] array){
     int[] summ = new int[array.GetLength(0)];
     
@@ -166,7 +167,7 @@ else
     Console.WriteLine("Введён не прямоугольный двумерный массив!");
 }
 
-  
+ */  
 
 
 
@@ -182,3 +183,46 @@ else
 // 12 13 14 05
 // 11 16 15 06
 // 10 09 08 07
+
+//  Заполняем массив по спирали начиная с 1
+void FillArraySpiral(int[,] array, int n)
+{
+    int i = 0, j = 0;
+    int value = 1;
+    for (int e = 0; e < n * n; e++)
+    {
+        int k = 0;
+        do { array[i, j++] = value++; } while (++k < n - 1);
+        for (k = 0; k < n - 1; k++) array[i++, j] = value++;
+        for (k = 0; k < n - 1; k++) array[i, j--] = value++;
+        for (k = 0; k < n - 1; k++) array[i--, j] = value++;
+        ++i; ++j;
+        n = n < 2 ? 0 : n - 2;
+    }
+}
+
+// Вывод двумерного массива в консоль
+void Print2DArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] < 10)
+            {
+                Console.Write("0" + array[i, j]);
+                Console.Write(" ");
+            }
+            else Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int size = 4;
+int[,] mass = new int[size, size];
+FillArraySpiral(mass, size);
+Print2DArray(mass);
+
+
+
